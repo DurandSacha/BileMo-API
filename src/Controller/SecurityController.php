@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
+use App\Entity\Client;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -25,23 +25,23 @@ class SecurityController extends AbstractController
     {
         $values = json_decode($request->getContent());
         if(isset($values->username,$values->password)) {
-            $user = new User();
-            $user->setUsername($values->username);
-            $user->setPassword($passwordEncoder->encodePassword($user, $values->password));
-            $user->setRoles($user->getRoles());
-            $errors = $validator->validate($user);
+            $client = new Client();
+            $client->setUsername($values->username);
+            $client->setPassword($passwordEncoder->encodePassword($client, $values->password));
+            $client->setRoles($client->getRoles());
+            $errors = $validator->validate($client);
             if(count($errors)) {
                 $errors = $serializer->serialize($errors, 'json');
                 return new Response($errors, 500, [
                     'Content-Type' => 'application/json'
                 ]);
             }
-            $entityManager->persist($user);
+            $entityManager->persist($client);
             $entityManager->flush();
 
             $data = [
                 'status' => 201,
-                'message' => 'User created'
+                'message' => 'Client created'
             ];
 
             return new JsonResponse($data, 201);
@@ -52,4 +52,5 @@ class SecurityController extends AbstractController
         ];
         return new JsonResponse($data, 500);
     }
+
 }

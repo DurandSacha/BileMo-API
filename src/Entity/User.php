@@ -2,18 +2,23 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
 use ApiPlatform\Core\Annotation\ApiResource;
-use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Serializer\Annotation\Groups;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ApiResource(
+ *     collectionOperations={"get","post"},
+ *     itemOperations={
+ *     "get",
+ *     "post"={
+ *          "method"="POST",
+ *          "method"="DELETE"
+ *          }
+ *     }
+ * )
+ * @ORM\Entity(repositoryClass="App\Repository\ClientRepository")
  */
-class User implements UserInterface
+class User
 {
     /**
      * @ORM\Id()
@@ -23,91 +28,59 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=180, unique=true)
+     * @ORM\Column(type="string", length=255)
      */
-    private $username;
+    private $name;
 
     /**
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="text")
      */
-    private $roles = [];
+    private $description;
 
     /**
-     * @var string The hashed password
-     * @ORM\Column(type="string")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Client", inversedBy="users")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $password;
+    private $Client;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * A visual identifier that represents this user.
-     *
-     * @see UserInterface
-     */
-    public function getUsername(): string
+    public function getName(): ?string
     {
-        return (string) $this->username;
+        return $this->name;
     }
 
-    public function setUsername(string $username): self
+    public function setName(string $name): self
     {
-        $this->username = $username;
+        $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @see UserInterface
-     */
-    public function getRoles(): array
+    public function getDescription(): ?string
     {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
+        return $this->description;
     }
 
-    public function setRoles(array $roles): self
+    public function setDescription(string $description): self
     {
-        $this->roles = $roles;
+        $this->description = $description;
 
         return $this;
     }
 
-    /**
-     * @see UserInterface
-     */
-    public function getPassword(): string
+    public function getClient(): ?Client
     {
-        return (string) $this->password;
+        return $this->Client;
     }
 
-    public function setPassword(string $password): self
+    public function setClient(?Client $Client): self
     {
-        $this->password = $password;
+        $this->Client = $Client;
 
         return $this;
-    }
-
-    /**
-     * @see UserInterface
-     */
-    public function getSalt()
-    {
-        // not needed when using the "bcrypt" algorithm in security.yaml
-    }
-
-    /**
-     * @see UserInterface
-     */
-    public function eraseCredentials()
-    {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
     }
 }

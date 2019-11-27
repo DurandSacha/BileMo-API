@@ -12,7 +12,11 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ApiResource(
  *     collectionOperations={"get"={
  *          "normalization_context"={"groups"={"list"}}}
+ *          },
+ *     attributes={
+ *          "pagination_items_per_page"=5
  *     }
+ *
  * )
  * @ORM\Entity(repositoryClass="App\Repository\SmartphoneRepository")
  */
@@ -169,6 +173,9 @@ class Smartphone
         return $this->network;
     }
 
+    /*
+     * @SerializedName("Network_Type")
+     */
     public function setNetwork(?string $network): self
     {
         $this->network = $network;

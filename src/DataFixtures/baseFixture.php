@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: sacha
+ * Client: sacha
  * Date: 09/11/2019
  * Time: 02:34
  */
@@ -32,7 +32,7 @@ abstract class baseFixture extends Fixture
      * Create many objects at once:
      *
      *      $this->createMany(10, function(int $i) {
-     *          $user = new User();
+     *          $user = new Client();
      *          $user->setFirstName('Ryan');
      *
      *           return $user;

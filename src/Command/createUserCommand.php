@@ -3,7 +3,7 @@
 
 namespace App\Command;
 
-use App\Entity\User;
+use App\Entity\Client;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface as EntityManagerInterfaceAlias;
@@ -34,7 +34,7 @@ class createUserCommand extends Command
     protected function configure()
     {
         $this
-            ->setDescription('Create a User wit ROLE_USER role')
+            ->setDescription('Create a Client wit ROLE_USER role')
             ->setHelp('use with : php bin/console app:create:user sacha5 000000')
 
             // configure an argument
@@ -50,13 +50,13 @@ class createUserCommand extends Command
     {
 
         $output->writeln([
-            'User Creator',
+            'Client Creator',
             '============',
             '',
         ]);
 
         // retrieve the argument value using getArgument()
-        $user = new User();
+        $user = new Client();
         $user->setUsername($input->getArgument('username'));
         $user->setPassword($this->passwordEncoder->encodePassword($user, $input->getArgument('password')));
         $user->setRoles(["ROLE_USER"]);
