@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -16,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
  *          }
  *     }
  * )
- * @ORM\Entity(repositoryClass="App\Repository\ClientRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
 class User
 {
@@ -39,7 +40,7 @@ class User
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Client", inversedBy="users")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $Client;
 
@@ -77,9 +78,11 @@ class User
         return $this->Client;
     }
 
-    public function setClient(?Client $Client): self
+    public function setClient(?Client $Client, EntityManagerInterface $em): self
     {
         $this->Client = $Client;
+        $em->persist($Client);
+        $em->flush();
 
         return $this;
     }

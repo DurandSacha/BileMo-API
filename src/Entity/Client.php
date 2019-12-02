@@ -41,7 +41,7 @@ class Client implements UserInterface
     private $password;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="Client", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="Client")
      */
     private $users;
 
@@ -124,39 +124,9 @@ class Client implements UserInterface
         // $this->plainPassword = null;
     }
 
-    public function getTokenUser(UserInterface $user, JWTTokenManagerInterface $JWTManager)
+
+    public static function __callStatic($name, $arguments)
     {
-        return new JsonResponse(['token' => $JWTManager->create($user)]);
-    }
-
-    /**
-     * @return Collection|User[]
-     */
-    public function getUsers(): Collection
-    {
-        return $this->users;
-    }
-
-    public function addUser(User $user): self
-    {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->setClient($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        if ($this->users->contains($user)) {
-            $this->users->removeElement($user);
-            // set the owning side to null (unless already changed)
-            if ($user->getClient() === $this) {
-                $user->setClient(null);
-            }
-        }
-
-        return $this;
+        // TODO: Implement __callStatic() method.
     }
 }
