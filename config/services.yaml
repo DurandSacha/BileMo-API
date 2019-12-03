@@ -4,6 +4,19 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 services:
+
+    PostListener:
+        class: \App\EntityListener\PostListener;
+        #arguments:
+            #$security: '@security'
+        tags:
+            - { name: doctrine.orm.entity_listener
+                #event: prePersist
+                #entity: App\Entity\User
+                #entity_manager: custom}
+
+            # Or, optionally, you can give the entity manager name as below
+            #- { name: doctrine.orm.entity_listener, entity_manager: custom }
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.

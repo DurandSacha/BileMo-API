@@ -4,7 +4,9 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * @ApiResource(
@@ -18,6 +20,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\EntityListeners({"\App\EntityListener\PostListener"})
  */
 class User
 {
@@ -78,11 +81,12 @@ class User
         return $this->Client;
     }
 
-    public function setClient(?Client $Client, EntityManagerInterface $em): self
+    /**
+     * @ORM\PrePersist
+     */
+    public function setClient(?Client $Client): self
     {
         $this->Client = $Client;
-        $em->persist($Client);
-        $em->flush();
 
         return $this;
     }

@@ -12,7 +12,7 @@ use App\Entity\User;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\Security\Core\Security;
 
-final class searchUserLinkedToClient implements QueryCollectionExtensionInterface, QueryItemExtensionInterface
+class searchUserLinkedToClient implements QueryCollectionExtensionInterface, QueryItemExtensionInterface
 {
     private $security;
 
@@ -33,6 +33,7 @@ final class searchUserLinkedToClient implements QueryCollectionExtensionInterfac
 
     private function addWhere(QueryBuilder $queryBuilder, string $resourceClass): void
     {
+
         if (Client::class !== $resourceClass || $this->security->isGranted('ROLE_ADMIN') || null === $user = $this->security->getUser()) {
             $user = $this->security->getUser();
             $rootAlias = $queryBuilder->getRootAliases()[0];
@@ -42,6 +43,7 @@ final class searchUserLinkedToClient implements QueryCollectionExtensionInterfac
             return;
 
         }
+        
 
 
     }
