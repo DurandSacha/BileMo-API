@@ -20,6 +20,7 @@ use Symfony\Component\Security\Core\Security;
  *     }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\EntityListeners({"\App\EntityListener\PostListener"})
  */
 class User
@@ -81,9 +82,6 @@ class User
         return $this->Client;
     }
 
-    /**
-     * @ORM\PrePersist
-     */
     public function setClient(?Client $Client): self
     {
         $this->Client = $Client;

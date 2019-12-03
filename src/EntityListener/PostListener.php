@@ -13,37 +13,41 @@ use App\Doctrine\searchUserLinkedToClient;
 use App\Entity\Client;
 use App\Entity\User;
 use Doctrine\Common\EventSubscriber;
+use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Events;
 use Symfony\Component\Security\Core\Security;
 
-class PostListener extends searchUserLinkedToClient
+/*
+ * this class is an event listener that defines the user-to-client relationship without specifying the client.
+ * The client added to the user database is the one connected with the Token JWT
+ */
+
+class PostListener implements EventSubscriber
 {
 
-    /*
     private $security;
 
-    public function __construct($security)
+    public function __construct(Security $security)
     {
-        parent::__construct($security);
+        $this->security = $security;
     }
-    */
 
+
+
+    public function getSubscribedEvents()
+    {
+        return [
+            Events::postPersist,
+            Events::postRemove,
+            Events::postUpdate,
+            Events::prePersist,
+        ];
+    }
 
     public function prePersist(User $user)
     {
-        //$client = $this->security->getUser();
-        //$user->setClient($client);
-
-        //$user->setName('name create with postListener');
-    }
-
-    /**
-     * Returns an array of events this subscriber wants to listen to.
-     *
-     * @return string[]
-     */
-    public function getSubscribedEvents()
-    {
-        // TODO: Implement getSubscribedEvents() method.
+        $client = $this->security->getUser();
+        $user->setClient($client);
     }
 }

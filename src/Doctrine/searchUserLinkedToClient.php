@@ -43,7 +43,7 @@ class searchUserLinkedToClient implements QueryCollectionExtensionInterface, Que
             return;
 
         }
-        
+
 
 
     }
