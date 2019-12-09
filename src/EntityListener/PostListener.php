@@ -15,6 +15,7 @@ use App\Entity\User;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Events;
 use Symfony\Component\Security\Core\Security;
 
@@ -27,13 +28,29 @@ class PostListener implements EventSubscriber
 {
 
     private $security;
+    private $em;
 
-    public function __construct(Security $security)
+    public function __construct(Security $security, EntityManagerInterface $em)
     {
         $this->security = $security;
+        $this->em = $em;
     }
 
 
+
+    public function prePersist(User $user)
+    {
+        $client = $this->security->getUser();
+        $user->setClient($client);
+    }
+
+    public function postPersist(User $user)
+    {
+        $client = $this->security->getUser();
+        $user->setClient($client);
+        $this->em->persist($user);
+        $this->em->flush();
+    }
 
     public function getSubscribedEvents()
     {
@@ -43,11 +60,5 @@ class PostListener implements EventSubscriber
             Events::postUpdate,
             Events::prePersist,
         ];
-    }
-
-    public function prePersist(User $user)
-    {
-        $client = $this->security->getUser();
-        $user->setClient($client);
     }
 }

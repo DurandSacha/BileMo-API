@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "40e582fb8100127a57dd06dc4c1c95a4",
+    "content-hash": "8dc7b6a62121a4fc455a426179c0b948",
     "packages": [
         {
             "name": "api-platform/api-pack",
@@ -7295,16 +7295,16 @@
         },
         {
             "name": "twbs/bootstrap",
-            "version": "v4.3.1",
+            "version": "v4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "8fa0d3010112dca5dd6dd501173415856001ba8b"
+                "reference": "8a628b943cf31ca0a002c08af661a95772480225"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/8fa0d3010112dca5dd6dd501173415856001ba8b",
-                "reference": "8fa0d3010112dca5dd6dd501173415856001ba8b",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/8a628b943cf31ca0a002c08af661a95772480225",
+                "reference": "8a628b943cf31ca0a002c08af661a95772480225",
                 "shasum": ""
             },
             "replace": {
@@ -7331,7 +7331,7 @@
                 }
             ],
             "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-            "homepage": "https://getbootstrap.com/",
+            "homepage": "https://getbootstrap.com",
             "keywords": [
                 "JS",
                 "css",
@@ -7342,7 +7342,7 @@
                 "sass",
                 "web"
             ],
-            "time": "2019-02-13T16:01:40+00:00"
+            "time": "2018-01-18T18:29:48+00:00"
         },
         {
             "name": "twig/extra-bundle",

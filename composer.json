@@ -30,7 +30,7 @@
         "symfony/test-pack": "^1.0",
         "symfony/twig-pack": "^1.0",
         "symfony/yaml": "4.3.*",
-        "twbs/bootstrap": "^4.3"
+        "twbs/bootstrap": "4.0.0"
     },
     "require-dev": {
     },

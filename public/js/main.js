@@ -1,4 +1,17 @@
-// evenement a ecouter pour modifier un objet après sa désérialisation :
-// // faire un event listener sur : serializer.post_deserialize
+
+require('babel-polyfill');
+require('path');
+require('jquery');
+//require('font-awesome/css/font-awesome.css');
 
 console.log('js actif');
+
+$(document).ready(function() {
+
+    $('.data').click(function() {
+        alert("div clicked and Jquery actived");
+        this.css( "border", "3px solid red" );
+        console.log('jQuery actived');
+    });
+
+});

@@ -10,6 +10,11 @@
             <!--<link rel="stylesheet"  href="{ { asset('vendor/twbs/bootstrap/css/bootstrap.css') }}" type="text/css"/>-->
             <!-- Custom styles for this template -->
             <link rel="stylesheet" href="{{ asset('css/bilemo.css') }}" type="text/css"/>
+
+            <!-- bootstrap -->
+            <link rel="stylesheet" href="{{ asset('') }}" type="text/css"/>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
         {% endblock %}
     </head>
@@ -18,10 +23,11 @@
 
 
         {% block javascripts %}
-            <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+            <!--<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+            --><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-            <script type="text/javascript" src="{{ asset('js/main.js') }}"> </script>
+            <!--<script src="{ { asset('./src/build/main.js') }}" ></script>-->
+
             <script src="{{ asset('js/main.js') }}" ></script>
         {% endblock %}
     </body>
