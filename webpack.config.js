@@ -1,62 +1,26 @@
-const webpack = require('webpack');
+var Encore = require('@symfony/webpack-encore');
+Encore
 
-const path = require('path');
-const $ = require('jquery');
+    .setOutputPath('public/build/')
+    // public path used by the web server to access the output path
+    .setPublicPath('build')
 
-module.exports = {
-    entry: "./public/js/main.js",
-    mode: 'development',
-    output: {
-        path: __dirname+'/public/build',
-        filename: "[name].js",
-        publicPath: '/build/'
+    .addEntry('main', './assets/js/main.js')
+    .configureBabel(() => {}, {
+        useBuiltIns: 'usage',
+        corejs: 3
+    })
+    .enableSingleRuntimeChunk()
+    .cleanupOutputBeforeBuild()
+    .copyFiles({
+        from: './assets/images',
+        to: 'images/[path][name].[hash:8].[ext]'
+    })
+    .splitEntryChunks()
+    .autoProvidejQuery()
+    .enablePostCssLoader()
+    .enableVersioning(Encore.isProduction())
 
-    },
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                use: {
-                    loader: 'babel-loader'
-                }
-            },
-            {
-                test: /\.(png|jpg|jpeg|gif|ico|svg)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name]-[hash:6].[ext]'
-                        },
-                    }
-                ]
-            },
-            {
-                test: /\.(woff|woff2|eot|ttf|otf)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name]-[hash:6].[ext]'
-                        },
-                    }
-                ]
-            },
-            {
-                test: /\.css$/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                ]
-            }
-        ]
 
-    },
-    plugins: [
-        new webpack.ProvidePlugin({
-            jQuery: 'jquery',
-            $: 'jquery'
-        })
-    ]
-
-};
+;
+module.exports = Encore.getWebpackConfig();
