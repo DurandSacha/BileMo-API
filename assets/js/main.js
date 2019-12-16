@@ -10,8 +10,6 @@ alertFunction('hello from module alert');
 
 
 $(document).ready(function() {
-    $('.data').click(function() {
-        alert("div clicked and Jquery actived");
-    });
+
 
 });
