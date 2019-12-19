@@ -30,6 +30,7 @@ How to use this project on your environment ?
 -  run `php bin/console d:d:c`
 -  run `php bin/console make:migration`
 -  run `php bin/console d:m:m`
+-  run `yarn run encore dev --watch`
 -  You can run this project with docker containers (docker-compose included in this repository )
 
 ## Other information 

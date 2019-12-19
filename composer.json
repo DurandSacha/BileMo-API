@@ -24,7 +24,6 @@
         "symfony/maker-bundle": "^1.14",
         "symfony/monolog-bundle": "^3.4",
         "symfony/orm-pack": "^1.0",
-        "symfony/profiler-pack": "^1.0",
         "symfony/security-bundle": "4.3.*",
         "symfony/serializer-pack": "^1.0",
         "symfony/test-pack": "^1.0",
@@ -33,6 +32,7 @@
         "twbs/bootstrap": "4.0.0"
     },
     "require-dev": {
+        "symfony/profiler-pack": "^1.0"
     },
     "config": {
         "preferred-install": {

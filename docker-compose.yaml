@@ -43,6 +43,8 @@ services:
     environment:
       - ${BLACKFIRE_SERVER_ID}
       - ${BLACKFIRE_SERVER_TOKEN}
+      - ${BLACKFIRE_CLIENT_ID}
+      - ${BLACKFIRE_CLIENT_TOKEN}
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin

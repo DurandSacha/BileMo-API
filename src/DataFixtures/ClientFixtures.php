@@ -51,7 +51,3 @@ class ClientFixtures extends baseFixture
         $manager->flush();
     }
 }
-
-
-
-

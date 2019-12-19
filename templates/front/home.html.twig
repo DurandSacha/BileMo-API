@@ -3,9 +3,11 @@
 {% block title %}Home Demo{% endblock %}
 
 {% block body %}
+    <div id="js-hello"></div>
     <br/><br/>
     <div class="content">
         <div class="container">
+
             <div class="row">
                 <div class="data col-lg-8">
                     <h2> Hello Bilemo User</h2>
@@ -33,20 +35,31 @@
             </div>
 
             <div class="row">
+                <div class="data col-lg-8">
+                    <div id="js-token"></div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <div id="js-button-generate"></div>
+                <!--
                 <div class="data col-lg-3">
-                    <button type="button" class="btn btn-success js-view-smartphones">View Smartphones Available</button>
+                    <button type="button" class="btn btn-success js-view-smartphones"
+                            onClick="">View Smartphones Available</button>
                 </div>
 
                 <div class="data col-lg-2">
-                    <button type="button" class="btn btn-success js-view-one-smartphone">View one Smartphone</button>
+                    <button type="button" class="btn btn-success js-view-one-smartphone"
+                            onClick="{console.log('OMG an onClick!') }">View one Smartphone</button>
                 </div>
 
                 <div class="data col-lg-2">
-                    <button type="button" class="btn btn-success js-view-users">View Your User</button>
+                    <button type="button" class="btn btn-success js-view-users"
+                            onClick="{console.log('OMG an onClick!') }">View Your User</button>
                 </div>
 
-                <!-- <button type="button" class="btn btn-dark">Dark</button> -->
-                <!-- <button type="button" class="btn btn-info">Info</button> -->
 
             </div>
 
@@ -54,20 +67,29 @@
 
             <div class="row">
                 <div class="data col-lg-3">
-                    <button type="button" class="btn btn-info js-add_user">Add User</button>
+                    <button type="button" class="btn btn-info js-add_user"
+                            onClick="{console.log('OMG an onClick!') }">Add User</button>
                 </div>
 
                 <div class="data col-lg-2">
-                    <button type="button" class="btn btn-info js-add-smartphone">Add Smartphone</button>
+                    <button type="button" class="btn btn-info js-add-smartphone"
+                            onClick="{console.log('OMG an onClick!') }">Add Smartphone</button>
                 </div>
 
                 <div class="data col-lg-2">
-                    <button type="button" class="btn btn-danger js-delete-User">Delete User</button>
+                    <button type="button" class="btn btn-danger js-delete-User"
+                            onClick="{console.log('OMG an onClick!') }">Delete User</button>
                 </div>
 
-                <!-- <button type="button" class="btn btn-dark">Dark</button> -->
-                <!-- <button type="button" class="btn btn-info">Info</button> -->
+            </div>
 
+            -->
+                <br/><hr><br/>
+
+
+            <div class="data ">
+                <div id="js-form-post"></div>
+                <div id="js-response-view"></div>
             </div>
 
         </div>

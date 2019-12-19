@@ -18,8 +18,11 @@ Encore
     })
     .splitEntryChunks()
     .autoProvidejQuery()
-    .enablePostCssLoader()
+    //.enablePostCssLoader()
     .enableVersioning(Encore.isProduction())
+
+    //react-Options
+    .enableReactPreset()
 
 
 ;
