@@ -49,6 +49,8 @@ security:
                 provider: app_user_provider
                 authenticators:
                     - App\Security\LoginFormAuthenticator
+            logout:
+                path:   /logout
 
 
     access_control:
