@@ -15,6 +15,13 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *          },
  *     attributes={
  *          "pagination_items_per_page"=5
+ *     },
+ *     itemOperations={
+ *     "get",
+ *     "post"={
+ *          "method"="POST",
+ *          "method"="DELETE"
+ *          }
  *     }
  *
  * )

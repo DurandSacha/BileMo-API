@@ -9,15 +9,11 @@ export default class ResponseView extends Component {
         };
     }
 
-
-
-
-
     render() {
 
         return (
             <div className='new-line'>
-                <p>API Response Here </p>
+                <p>JSON Response</p>
             </div>
 
         );

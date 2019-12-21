@@ -13,6 +13,16 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
+ * @ApiResource(
+ *     collectionOperations={"get","post"},
+ *     itemOperations={
+ *     "get",
+ *     "post"={
+ *          "method"="POST",
+ *          "method"="DELETE"
+ *          }
+ *     }
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\ClientRepository")
  */
 class Client implements UserInterface

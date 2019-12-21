@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import PostForm from "../main";
 
 export default class generateButton extends Component {
 
@@ -16,6 +17,7 @@ export default class generateButton extends Component {
 
         function viewsmartphone(e) {
             e.preventDefault();
+
             console.log('API vers api/smartphones?page=1 ');
             /*
             fetch("https://api.example.com/items")

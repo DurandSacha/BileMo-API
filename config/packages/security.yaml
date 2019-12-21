@@ -19,14 +19,17 @@ security:
     firewalls:
 
         login:
-            pattern:  ^/api/login
+            pattern:  ^/api/
             stateless: true
-            anonymous: true
+            anonymous: ~
             json_login:
                 check_path: /api/login_check
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
                 require_previous_session: false
+            guard:
+                authenticators:
+                    - App\Security\LoginFormAuthenticator
 
         dev:
             pattern: ^/_(profiler|wdt)
@@ -42,14 +45,13 @@ security:
 
         main:
             anonymous: true
-            json_login:
-                check_path: /api/login_check
-                username_path: username
-                password_path: password
-                success_handler: lexik_jwt_authentication.handler.authentication_success
-                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+            guard:
+                provider: app_user_provider
+                authenticators:
+                    - App\Security\LoginFormAuthenticator
+
 
     access_control:
-        #- { path: ^/api/login_check, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        #- { path: ^/api/,roles: ROLE_USER }
-
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    #- { path: ^/api/login_check, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    #- { path: ^/api/,roles: ROLE_USER }

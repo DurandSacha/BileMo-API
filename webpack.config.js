@@ -6,9 +6,12 @@ Encore
     .setPublicPath('build')
 
     .addEntry('main', './assets/js/main.js')
-    .configureBabel(() => {}, {
-        useBuiltIns: 'usage',
-        corejs: 3
+    .configureBabel((babelConfig) => {
+        if (Encore.isProduction()) {
+            babelConfig.plugins.push(
+                'transform-react-remove-prop-types'
+            );
+        }
     })
     .enableSingleRuntimeChunk()
     .cleanupOutputBeforeBuild()
