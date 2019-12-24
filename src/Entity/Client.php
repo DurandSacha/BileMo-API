@@ -12,17 +12,9 @@ use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
+
 /**
- * @ApiResource(
- *     collectionOperations={"get","post"},
- *     itemOperations={
- *     "get",
- *     "post"={
- *          "method"="POST",
- *          "method"="DELETE"
- *          }
- *     }
- * )
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\Entity(repositoryClass="App\Repository\ClientRepository")
  */
 class Client implements UserInterface
@@ -138,5 +130,10 @@ class Client implements UserInterface
     public static function __callStatic($name, $arguments)
     {
         // TODO: Implement __callStatic() method.
+    }
+
+    public function getTokenUser(UserInterface $user, JWTTokenManagerInterface $JWTManager)
+    {
+        return new JsonResponse(['token' => $JWTManager->create($user)]);
     }
 }
