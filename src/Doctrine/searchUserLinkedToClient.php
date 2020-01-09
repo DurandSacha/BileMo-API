@@ -46,6 +46,5 @@ class searchUserLinkedToClient implements QueryCollectionExtensionInterface, Que
             $rootAlias = $queryBuilder->getRootAliases()[0];
             $queryBuilder->andWhere(sprintf('%s.Client = :client_id', $rootAlias));
             $queryBuilder->setParameter('client_id', $client);
-
     }
 }
