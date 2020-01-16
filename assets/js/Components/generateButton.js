@@ -12,6 +12,7 @@ export default class generateButton extends Component {
             viewSmartphoneState: false,
             viewOneSmartphoneState: false,
             viewUserState: false,
+
         };
     }
 
@@ -45,6 +46,7 @@ export default class generateButton extends Component {
     }
 
     render() {
+
         return (
 
             <div>
@@ -68,10 +70,6 @@ export default class generateButton extends Component {
                     </div>
                     <br/>
 
-                </div>
-
-                <div className="row">
-                    <p>state 1 :  {this.state.viewSmartphoneState}</p>
                 </div>
 
                 <ResponseView
