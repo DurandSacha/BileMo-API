@@ -3,15 +3,18 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import ResponseView from "../Components/ResponseView";
+import { getSmartphones, getOneSmartphone , getUsers} from "../api/smartphoneApi";
+
 
 export default class generateButton extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            viewSmartphoneState: false,
+            viewSmartphoneState: true,
             viewOneSmartphoneState: false,
             viewUserState: false,
+            results: [],
 
         };
     }
@@ -24,55 +27,69 @@ export default class generateButton extends Component {
         console.log('reinitialisation executé');
     };
 
+    viewSmartphone = (event) => {
 
-
-    viewSmartphone() {
         this.ReinizializeState();
-        this.setState({viewSmartphoneState: true});
-        let button = 'viewSmartphoneState';
-        console.log('API vers api/smartphones?page=1 ');
-    }
+        getSmartphones()
+            .then(response => {
+                this.setState({
+                    results : response,
+                    viewUserState: true,
+                })
+            });
+    };
+
+
+
 
     viewOneSmartphone() {
         this.ReinizializeState();
-        this.setState({viewOneSmartphoneState: true});
-        console.log('API vers api/smartphones/{id} ');
-    }
+        getOneSmartphone()
+            .then(response => {
+                this.setState({
+                    results : response,
+                    viewOneSmartphoneState: true,
+                })
+            });
+    };
+
+
 
     viewUsers() {
         this.ReinizializeState();
-        this.setState({viewUserState: true});
-        console.log('API vers api/users ');
+        getUsers()
+            .then(response => {
+                this.setState({
+                    viewUserState: true,
+                    results : response
+                })
+            });
     }
 
     render() {
 
         return (
 
+
+
             <div>
-                <div className="row">
-                    <div className="data col-lg-3">
-                        <button type="button" className="btn btn-success js-view-smartphones"
-                                onClick = {() => this.viewSmartphone ()}>View Smartphones Available
-                        </button>
+                <nav>
+                    <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a className="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home"
+                           role="tab" aria-controls="nav-home" aria-selected="true"
+                           onClick = {() => this.viewSmartphone ()}>Smartphones</a>
+
+                        <a className="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+                           role="tab" aria-controls="nav-profile" aria-selected="false"
+                           onClick = {() => this.viewUsers ()}>Your Users</a>
+
                     </div>
-
-                    <div className="data col-lg-2">
-                        <button type="button" className="btn btn-success js-view-one-smartphone"
-                                onClick = {() => this.viewOneSmartphone ()}>View one Smartphone
-                        </button>
-                    </div>
-
-                    <div className="data col-lg-2">
-                        <button type="button" className="btn btn-success js-view-users"
-                                onClick = {() => this.viewUsers ()}>View Your User
-                        </button>
-                    </div>
-                    <br/>
-
-                </div>
-
+                </nav>
+                <br/><br/><br/><br/>
                 <ResponseView
+                    {...this.props}
+                    {...this.state}
+                    results={this.state.results}
                     buttonViewSmartphoneState={this.state.viewSmartphoneState}
                     buttonViewOneSmartphoneState={this.state.viewOneSmartphoneState}
                     buttonViewUsers={this.state.viewUserState}

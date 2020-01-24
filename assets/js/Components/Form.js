@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 
 import 'whatwg-fetch';
+import ResponseView from "./generateButton";
 
 
 export default class Form extends Component {
