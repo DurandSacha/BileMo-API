@@ -6,7 +6,7 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-    <a class="navbar-brand" href="#">Bilemo API</a>
+    <a class="navbar-brand blank text-light" href="#">Bilemo API</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -14,15 +14,15 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Lien API Platform <span class="sr-only">(current)</span></a>
+                <a class="nav-link text-light" href="{{ path('api_entrypoint') }}">API Platform <span class="sr-only">(current)</span></a>
             </li>
 
         </ul>
 
         {% if app.user %}
-                <li class="nav-item mr-sm-2 inline">Hello {{ user.username }}</li>
-                <li class="nav-item inline">
-                    <a class="nav-link logout inline" href="{{ path('logout') }}">Log Out</a>
+                <li class="navbar-brand mr-sm-2 inline text-light">Hello {{ user.username }}</li>
+                <li>
+                    <a class="navbar-brand logout inline text-info" href="{{ path('logout') }}">Log Out</a>
                 </li>
         {% else %}
 
@@ -46,41 +46,37 @@
 
             <div class="row">
                 <div class="data col-lg-8">
-                    <h2> Hello Bilemo User</h2>
-                    <p> You can use this API if you are <strong>connected</strong> and referenced on database with JWT Token</p>
+                    <h2 class="text-info"> Hello Bilemo User</h2>
+                    <p> You can use this API if you are <strong class="text-success">connected</strong> and referenced on database with JWT Token</p>
                     <!-- <p> connect to this space </p> -->
 
                     <p> API Endpoint </p>
                     <ul>
-                        <li>List of Bilemo products : /api/Bilemo/products</li>
-                        <li>Detail on product : /api/Bilemo/products/id_product</li>
-                        <li>List of API users : /api/Bilemo/users</li>
-                        <li>Detail on users : /api/Bilemo/user/id_user</li>
-                        <li>Add a new user linked to a customer : /api/Bilemo/users/add</li>
-                        <li>Delete a user linked to a customer : /api/Bilemo/users/delete/id_users</li>
+                        <li>GET /api/smartphones</li>
+                        <li>GET/api/smartphones/{id}</li>
+                        <li>POST /api/smartphones</li>
+                        <li>POST /api/users</li>
+                        <li>GET /api/users/</li>
+                        <li>GET /api/users/{id}</li>
+                        <li>POST /api/register</li>
+                        <li>POST /api/login_check</li>
+                        <li>DELETE /api/smartphones/{id}</li>
+                        <li>DELETE /api/users/{id}</li>
+                        <br/>
+                        <a href="{{ path('api_entrypoint') }}" class="btn btn-outline-info" role="button" aria-pressed="true">Try It</a>
+
                     </ul>
                 </div>
             </div>
-
             <hr>
-
             <div class="row">
                 <div class="data col-lg-8">
                     <h4> API Front Demo</h4><br/>
                 </div>
             </div>
 
-            <hr>
-
-
                 <div id="js-button-generate"></div>
-                <br/><hr><br/>
-
-            <div class="data">
-                <div id="js-form-post"></div>
-                <br/>
-                <div id="js-response-view"></div>
-            </div>
+                <br/><br/>
 
         </div>
     </div>

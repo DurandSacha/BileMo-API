@@ -7,13 +7,13 @@
  */
 
 namespace App\Tests\api;
+use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\ApiTestCase;
 use App\Entity\Client;
 use App\Entity\Smartphone;
 use App\Entity\User;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 
-class apiTest extends webTestCase
+class apiTest extends ApiTestCase
 {
     private $phone;
     private $client;
@@ -56,11 +56,11 @@ class apiTest extends webTestCase
         $this->assertResponseStatusCodeSame(200);
     }
 
-    /*
+
     public function testCreateUser()
     {
         $this->user->setId('1');
-        $user = $this->user->getId();
+        $user = $this->user;
         $client = self::createClient();
 
         $client->request('POST', '/api/users' , [
@@ -73,7 +73,7 @@ class apiTest extends webTestCase
         ]);
         $this->assertResponseStatusCodeSame(201);
     }
-    */
+
 
 
 

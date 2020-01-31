@@ -16,7 +16,8 @@ export function getSmartphones() {
         });
 }
 
-export function getOneSmartphone(number = 1) {
+export function getOneSmartphone(id) {
+    console.log('requete One Smartphone');
     // Number variable : the number what you make a request
     // 'api/smartphones/'+{number}+'.json'
     return fetch('api/smartphones/1.json')

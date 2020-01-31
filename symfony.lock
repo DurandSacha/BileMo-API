@@ -1,6 +1,15 @@
 {
+    "laminas/laminas-zendframework-bridge": {
+        "version": "1.0.1"
+    },
     "php": {
         "version": "7.4"
+    },
+    "symfony/http-client": {
+        "version": "v4.3.10"
+    },
+    "symfony/http-client-contracts": {
+        "version": "v1.1.8"
     },
     "symfony/webpack-encore-bundle": {
         "version": "1.6",
@@ -20,5 +29,8 @@
             "./package.json",
             "./webpack.config.js"
         ]
+    },
+    "webimpress/safe-writer": {
+        "version": "2.0.0"
     }
 }

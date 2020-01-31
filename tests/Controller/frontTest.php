@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 class frontTest extends webTestCase
 {
 
+    /*
     public function testHomepage()
     {
 
@@ -17,6 +18,7 @@ class frontTest extends webTestCase
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
 
     }
+    */
 
 
 }

@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import ResponseView from "../Components/ResponseView";
-import { getSmartphones, getOneSmartphone , getUsers} from "../api/smartphoneApi";
+import { getSmartphones,getUsers,getOneSmartphone} from "../api/smartphoneApi";
 
 
 export default class generateButton extends Component {
@@ -11,11 +11,11 @@ export default class generateButton extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            viewSmartphoneState: true,
+            viewSmartphoneState: false,
             viewOneSmartphoneState: false,
             viewUserState: false,
             results: [],
-
+            id:null,
         };
     }
 
@@ -27,31 +27,18 @@ export default class generateButton extends Component {
         console.log('reinitialisation executé');
     };
 
-    viewSmartphone = (event) => {
+    viewSmartphone = () => {
 
         this.ReinizializeState();
         getSmartphones()
             .then(response => {
                 this.setState({
                     results : response,
-                    viewUserState: true,
+                    viewSmartphoneState: true,
                 })
             });
     };
 
-
-
-
-    viewOneSmartphone() {
-        this.ReinizializeState();
-        getOneSmartphone()
-            .then(response => {
-                this.setState({
-                    results : response,
-                    viewOneSmartphoneState: true,
-                })
-            });
-    };
 
 
 
@@ -70,17 +57,16 @@ export default class generateButton extends Component {
 
         return (
 
-
-
             <div>
                 <nav>
                     <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                        <a className="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home"
+
+                        <a className="nav-item nav-link text-success" id="nav-home-tab" data-toggle="tab" href="#nav-home"
                            role="tab" aria-controls="nav-home" aria-selected="true"
                            onClick = {() => this.viewSmartphone ()}>Smartphones</a>
 
-                        <a className="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
-                           role="tab" aria-controls="nav-profile" aria-selected="false"
+                        <a className="nav-item nav-link text-success " id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+                           role="tab" aria-controls="nav-profile" aria-selected="true"
                            onClick = {() => this.viewUsers ()}>Your Users</a>
 
                     </div>
