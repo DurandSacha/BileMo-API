@@ -18,8 +18,6 @@ export function getSmartphones() {
 
 export function getOneSmartphone(id) {
     console.log('requete One Smartphone');
-    // Number variable : the number what you make a request
-    // 'api/smartphones/'+{number}+'.json'
     return fetch('api/smartphones/'+id+'.json')
         .then(response => {
             return response.text()

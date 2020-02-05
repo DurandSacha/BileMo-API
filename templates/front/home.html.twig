@@ -16,6 +16,9 @@
             <li class="nav-item active">
                 <a class="nav-link text-light" href="{{ path('api_entrypoint') }}">API Platform <span class="sr-only">(current)</span></a>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link text-light" href="{{ path('docs') }}">Docs</a>
+            </li>
 
         </ul>
 
@@ -69,6 +72,8 @@
                 </div>
             </div>
             <hr>
+
+            {% if app.user %}
             <div class="row">
                 <div class="data col-lg-8">
                     <h4> API Front Demo</h4><br/>
@@ -77,6 +82,7 @@
 
                 <div id="js-button-generate"></div>
                 <br/><br/>
+            {% endif %}
 
         </div>
     </div>
