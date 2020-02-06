@@ -17,7 +17,6 @@ use app\Security\LoginFormAuthenticator;
 
 class LoginFormTest extends TestCase
 {
-
     function testGetCredentials()
     {
         $test = '1';
