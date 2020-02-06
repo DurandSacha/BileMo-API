@@ -10,7 +10,6 @@ api_platform:
                 type: header
         versions: [3]
 
-    # register problem with this cache ?
     http_cache:
         max_age: 0
         shared_max_age: 3600

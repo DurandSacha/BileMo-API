@@ -56,7 +56,7 @@ class apiTest extends ApiTestCase
         $this->assertResponseStatusCodeSame(200);
     }
 
-
+    /*
     public function testCreateUser()
     {
         $this->user->setId('1');
@@ -73,6 +73,8 @@ class apiTest extends ApiTestCase
         ]);
         $this->assertResponseStatusCodeSame(201);
     }
+    */
+
 
 
 
