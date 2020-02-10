@@ -19,12 +19,12 @@ export default class generateButton extends Component {
         };
     }
 
-
     ReinizializeState() {
-        this.setState({viewSmartphoneState: false});
-        this.setState({viewOneSmartphoneState: false});
-        this.setState({viewUserState: false});
-        console.log('reinitialisation executé');
+       this.setState({
+           viewSmartphoneState: false,
+           viewOneSmartphoneState: false,
+           viewUserState: false,
+       });
     };
 
     viewSmartphone = () => {
@@ -38,9 +38,6 @@ export default class generateButton extends Component {
                 })
             });
     };
-
-
-
 
     viewUsers() {
         this.ReinizializeState();
