@@ -2,6 +2,11 @@ api_login_check:
   path: /api/login_check
   methods: ['POST']
 
+logout:
+  path: /logout
+  methods: GET
+
+
 
 
 

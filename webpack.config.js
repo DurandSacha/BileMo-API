@@ -6,10 +6,7 @@ Encore
     .setPublicPath('build')
 
     .addEntry('main', './assets/js/main.js')
-    .configureBabel(() => {}, {
-        useBuiltIns: 'usage',
-        corejs: 3
-    })
+    .configureBabel()
     .enableSingleRuntimeChunk()
     .cleanupOutputBeforeBuild()
     .copyFiles({
@@ -18,8 +15,11 @@ Encore
     })
     .splitEntryChunks()
     .autoProvidejQuery()
-    .enablePostCssLoader()
+    //.enablePostCssLoader()
     .enableVersioning(Encore.isProduction())
+
+    //react-Options
+    .enableReactPreset()
 
 
 ;

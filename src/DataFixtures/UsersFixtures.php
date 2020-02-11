@@ -24,10 +24,11 @@ class UsersFixtures extends baseFixture
 
     public function loadData(ObjectManager $manager)
     {
+        /*
         $adminUser = new User();
         $adminUser->setName('sacha6623@gmail.com');
         $adminUser->setDescription('a user');
-        $adminUser->setClient($this->getReference(ClientFixtures::Bouygue));
+        //$adminUser->setClient($this->getReference(ClientFixtures::Sfr));
         $manager->persist($adminUser);
 
         $user1 = new User();
@@ -43,6 +44,7 @@ class UsersFixtures extends baseFixture
         $manager->persist($user2);
 
         $manager->flush();
+        */
     }
 
 }

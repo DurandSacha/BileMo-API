@@ -2,6 +2,8 @@
 
 services:
 
+    Symfony\Component\HttpKernel\Profiler\Profiler: '@profiler'
+
     PostListener:
         class: App\EntityListener\PostListener
         #arguments: [@security]
@@ -10,6 +12,8 @@ services:
                 event: prePersist
                 entity: 'App\Entity\User'
                 lazy: true
+
+
 
 
 

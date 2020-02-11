@@ -1,17 +1,16 @@
+
 import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.css';
-import $ from 'jquery';
 import '../css/bilemo.css';
 
-import alertFunction from './components/alert';
 
-console.log('Hello from webpack Encore');
-alertFunction('hello from module alert');
+import React from 'react';
+import { render } from 'react-dom';
+
+import ResponseView from './Components/ResponseView';
+import GenerateButton from './Components/generateButton';
+
+render(<GenerateButton />, document.getElementById('js-button-generate'));
 
 
-$(document).ready(function() {
-    $('.data').click(function() {
-        alert("div clicked and Jquery actived");
-    });
 
-});

@@ -10,15 +10,20 @@ use App\Entity\Client;
 use App\Entity\Smartphone;
 use App\Entity\User;
 use Doctrine\ORM\QueryBuilder;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class searchUserLinkedToClient implements QueryCollectionExtensionInterface, QueryItemExtensionInterface
 {
     private $security;
 
+    private $user;
+
     public function __construct(Security $security)
     {
         $this->security = $security;
+
     }
 
     public function applyToCollection(QueryBuilder $queryBuilder, QueryNameGeneratorInterface $queryNameGenerator, string $resourceClass, string $operationName = null)
@@ -34,17 +39,12 @@ class searchUserLinkedToClient implements QueryCollectionExtensionInterface, Que
     private function addWhere(QueryBuilder $queryBuilder, string $resourceClass): void
     {
 
-        if (Client::class !== $resourceClass || $this->security->isGranted('ROLE_ADMIN') || null === $user = $this->security->getUser()) {
-            $user = $this->security->getUser();
+            if (User::class !== $resourceClass || $this->security->isGranted('ROLE_ADMIN') || null === $client = $this->security->getUser()) {
+                return;
+            }
+            //dd($this->security->getUser());
             $rootAlias = $queryBuilder->getRootAliases()[0];
-
             $queryBuilder->andWhere(sprintf('%s.Client = :client_id', $rootAlias));
-            $queryBuilder->setParameter('client_id', $user);
-            return;
-
-        }
-
-
-
+            $queryBuilder->setParameter('client_id', $client);
     }
 }

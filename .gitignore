@@ -14,6 +14,8 @@
 /src/build
 /public/build
 /yarn-error.log
+/public/data
+/data
 /.gitignore
 .stats.json
 ###< symfony/framework-bundle ###

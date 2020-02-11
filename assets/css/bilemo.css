@@ -18,3 +18,21 @@ body{
     margin-left: 10%;
     font-family: sans-serif ;
 }
+.new-line {
+    white-space: pre-line;
+}
+.btn{
+    margin-bottom: 26px;
+    padding: 11px;
+}
+.little{
+    font-size: 10px;
+}
+.btn-little{
+    padding: 5px;
+    margin-top: 5px;
+
+}
+.blank{
+    color:beige;
+}

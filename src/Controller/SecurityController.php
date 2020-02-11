@@ -53,4 +53,11 @@ class SecurityController extends AbstractController
         return new JsonResponse($data, 500);
     }
 
+    /**
+     * @Route("/docs", name="docs")
+     */
+    public function docs()
+    {
+        return $this->redirect('../api?ui=re_doc');
+    }
 }

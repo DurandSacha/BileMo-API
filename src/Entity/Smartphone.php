@@ -15,6 +15,13 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *          },
  *     attributes={
  *          "pagination_items_per_page"=5
+ *     },
+ *     itemOperations={
+ *     "get",
+ *     "post"={
+ *          "method"="POST",
+ *          "method"="DELETE"
+ *          }
  *     }
  *
  * )
@@ -78,6 +85,13 @@ class Smartphone
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $network;
+
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
     public function getId(): ?int
     {

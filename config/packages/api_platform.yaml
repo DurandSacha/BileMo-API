@@ -10,11 +10,11 @@ api_platform:
                 type: header
         versions: [3]
 
-    #http_cache:
-        #max_age: 0
-        #shared_max_age: 3600
-        #vary: ['Accept']
-        #public: true
-        #invalidation:
-            #enabled: false
-            #varnish_urls: []
+    http_cache:
+        max_age: 0
+        shared_max_age: 3600
+        vary: ['Accept']
+        public: true
+        invalidation:
+            enabled: false
+            varnish_urls: []

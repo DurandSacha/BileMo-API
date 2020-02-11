@@ -13,6 +13,6 @@ class frontTest extends webTestCase
 
         echo $client->getResponse()->getContent();
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
-    }
 
+    }
 }
