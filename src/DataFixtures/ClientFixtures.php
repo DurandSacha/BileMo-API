@@ -31,20 +31,20 @@ class ClientFixtures extends baseFixture
     public function loadData(ObjectManager $manager)
     {
         $client4 = new Client();
-        $client4->setUsername('Sfr');
-        $client4->setPassword($this->passwordEncoder->encodePassword($client4, '000000'));
-        $this->addReference('Sfr',$client4);
+        $client4->setUsername('Sfr')
+                ->setPassword($this->passwordEncoder->encodePassword($client4, '000000'));
+       ->addReference('Sfr',$client4);
         $manager->persist($client4);
 
         $client4 = new Client();
-        $client4->setUsername('Bouygue');
-        $client4->setPassword($this->passwordEncoder->encodePassword($client4, '000000'));
+        $client4->setUsername('Bouygue')
+                ->setPassword($this->passwordEncoder->encodePassword($client4, '000000'));
         $this->addReference('Bouygue',$client4);
         $manager->persist($client4);
 
         $client4 = new Client();
-        $client4->setUsername('Orange');
-        $client4->setPassword($this->passwordEncoder->encodePassword($client4, '000000'));
+        $client4->setUsername('Orange')
+                ->setPassword($this->passwordEncoder->encodePassword($client4, '000000'));
         $this->addReference('Orange',$client4);
         $manager->persist($client4);
 
