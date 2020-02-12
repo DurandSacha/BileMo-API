@@ -33,7 +33,7 @@ class ClientFixtures extends baseFixture
         $client4 = new Client();
         $client4->setUsername('Sfr')
                 ->setPassword($this->passwordEncoder->encodePassword($client4, '000000'));
-       ->addReference('Sfr',$client4);
+        $this->addReference('Sfr',$client4);
         $manager->persist($client4);
 
         $client4 = new Client();
