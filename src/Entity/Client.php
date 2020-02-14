@@ -133,11 +133,6 @@ class Client implements UserInterface
     }
 
 
-    public static function __callStatic($name, $arguments)
-    {
-        // TODO: Implement __callStatic() method.
-    }
-
     public function getTokenUser(UserInterface $user, JWTTokenManagerInterface $JWTManager)
     {
         return new JsonResponse(['token' => $JWTManager->create($user)]);
