@@ -228,6 +228,10 @@
       become: yes
       apt: pkg=acl
 
+    - name: install PhpMyAdmin
+      become: true
+      apt: pkg=phpmyadmin state=present
+
     - name: Set permissions on bin/console
       become: true
       file:
@@ -235,17 +239,20 @@
         mode: "a+x"
 
 
+    - name: Delete old Database
+      command: '{{ symfony_console_path }} doctrine:database:drop --force'
+
     # Symfony console commands
     - name: Create DB if not exists
       command: '{{ symfony_console_path }} doctrine:database:create --if-not-exists --no-interaction'
 
     - name: Execute migrations
       command: '{{ symfony_console_path }} doctrine:migrations:migrate --no-interaction'
-      when: code_changed
+      #when: code_changed
 
     - name: Load data fixtures
       command: '{{ symfony_console_path }} doctrine:fixtures:load --no-interaction'
-      when: symfony_env != "prod"
+      #when: symfony_env != "prod"
 
     - composer:
         command: install
