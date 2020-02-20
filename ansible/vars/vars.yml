@@ -1,9 +1,11 @@
 ---
-symfony_root_dir: "/var/www/html/BileMo-API"
+symfony_root_dir: "/var/www/html/bilemo/BileMo-API"
 symfony_web_dir: "{{ symfony_root_dir }}/public"
 symfony_var_dir: "{{ symfony_root_dir }}/var"
 symfony_console_path: "{{ symfony_root_dir }}/bin/console"
-server_name: vps
+database_url: "DATABASE_URL=mysql://user1:{{ sql_pass }}@127.0.0.1:3306/bilemo"
+
+server_name: bilemo
 installer: /tmp/installer.php
 
 symfony_secret: "{{ vault_symfony_secret }}"

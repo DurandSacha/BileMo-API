@@ -225,7 +225,7 @@
         dest: "{{ symfony_root_dir }}/.env"
         regexp: ''
         insertafter: ''
-        line: "DATABASE_URL=mysql://user1:{{ sql_pass }}@127.0.0.1:3306/bilemo"
+        line: "{{ database_url }}"
 
 
     - name: remove cache in var/cache
@@ -265,11 +265,56 @@
       command: '{{ symfony_console_path }} doctrine:fixtures:load --no-interaction'
       #when: symfony_env != "prod"
 
-    #- composer:
-        #command: install
-        #working_dir: "{{ symfony_root_dir }}"
+    # Yarn
+    - name: Add Yarn APT key
+      become: true
+      apt_key:
+        url: 'https://dl.yarnpkg.com/debian/pubkey.gpg'
+        state: present
 
-    - name: Clear cache
+    - name: Add Yarn to the source lists
+      become: true
+      lineinfile:
+        path: '/etc/apt/sources.list.d/yarn.list'
+        regexp: 'deb https://dl.yarnpkg.com/debian/ stable main'
+        line: 'deb https://dl.yarnpkg.com/debian/ stable main'
+        create: yes
+
+    - name: "Yarn | Install"
+      package:
+        name: yarn
+        state: present
+
+    - name: Install NodeJS / yarn
+      become: true
+      apt:
+        name:
+          - nodejs
+          - yarn
+        update_cache: yes
+
+    - name: Install packages based on package.json.
+      yarn:
+        path: "{{ symfony_root_dir }}"
+        state: latest
+
+    - name: Install bundle assets
+      command: '{{ symfony_console_path }} assets:install {{ symfony_web_dir }} --symlink --no-debug --env=prod'
+
+    - name: Install Node dependencies
+      command: yarn install
+      args:
+        chdir: '{{ symfony_root_dir }}'
+
+    #build all code in public/build // Launch yarn encore dev
+    - name: Build Yarn Dependencies
+      command: yarn encore dev
+      args:
+        chdir: '{{ symfony_root_dir }}'
+
+
+
+    - name: Clear cache and finish deploy
       command: '{{ symfony_console_path }} cache:clear --env={{ symfony_env }}'
       changed_when: false
       when: code_changed
