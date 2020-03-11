@@ -1,4 +1,4 @@
-<a href="https://codeclimate.com/github/DurandSacha/Symfony-Snowtricks/maintainability"><img src="https://api.codeclimate.com/v1/badges/2295e37585a45075da96/maintainability" /></a><br/>
+<a href="https://codeclimate.com/github/DurandSacha/BileMo-API/maintainability"><img src="https://api.codeclimate.com/v1/badges/2295e37585a45075da96/maintainability" /></a><br/>
 
 -----------------
 
