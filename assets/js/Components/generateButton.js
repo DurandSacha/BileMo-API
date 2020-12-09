@@ -5,7 +5,6 @@ import { render } from 'react-dom';
 import ResponseView from "../Components/ResponseView";
 import { getSmartphones,getUsers,getOneSmartphone} from "../api/smartphoneApi";
 
-
 export default class generateButton extends Component {
 
     constructor(props) {
@@ -51,9 +50,7 @@ export default class generateButton extends Component {
     }
 
     render() {
-
         return (
-
             <div>
                 <nav>
                     <div className="nav nav-tabs" id="nav-tab" role="tablist">
