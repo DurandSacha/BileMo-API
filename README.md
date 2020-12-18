@@ -19,6 +19,7 @@ The demonstration side is built with javascript and the React.js framework.
 - Symfony
 - Docker ( configure your environment)
 - Ansible ( deploy with ansible folder)
+- MVC structure
 
 ## Use this project 
 How to use this project on your environment ? 
